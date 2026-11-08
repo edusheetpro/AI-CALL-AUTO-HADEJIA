@@ -6,103 +6,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#063b2b">
 
-    <title>AI CALL AUTO HADEJIA</title>
+    <title>AI CALL AUTO HADEJIA | Your Smart Local Guide</title>
+
+    <meta name="description" content="AI CALL AUTO HADEJIA - Your intelligent Hausa and English local guide, powered by Nagari Technologies.">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- HEADER -->
     <header class="header">
+
         <div class="logo">🎙️</div>
+
         <h1>AI CALL AUTO HADEJIA</h1>
+
         <p>Your Smart Local Guide</p>
-        <span class="powered">Powered by Nagari Technologies</span>
+
+        <span class="powered">
+            POWERED BY NAGARI TECHNOLOGIES
+        </span>
+
     </header>
 
+
+    <!-- MAIN CONTENT -->
     <main class="container">
 
+        <!-- WELCOME -->
         <section class="welcome">
+
+            <span class="welcome-tag">
+                SMART LOCAL ASSISTANT
+            </span>
+
             <h2>Barka da zuwa Hadejia!</h2>
+
             <p>
-                Your intelligent Hausa and English
-                voice assistant.
+                Your intelligent local assistant for discovering
+                places, businesses and services around Hadejia.
             </p>
+
         </section>
 
+
+        <!-- AI ASSISTANT -->
         <section class="assistant">
 
-            <div class="assistant-icon">🤖</div>
+            <div class="assistant-icon">
+                🤖
+            </div>
 
-            <h2>AI Voice Assistant</h2>
+            <span class="welcome-tag">
+                AI VOICE TECHNOLOGY
+            </span>
 
-            <p id="status">
-                Ready to start testing
+            <h2>Meet Your AI Assistant</h2>
+
+            <p class="assistant-description">
+                Speak naturally in Hausa or English.
+                I'm here to help you explore Hadejia.
             </p>
 
+            <!-- STATUS -->
+            <div class="status-card">
+
+                <span class="status-indicator"></span>
+
+                <p id="status">
+                    AI Voice System Ready
+                </p>
+
+            </div>
+
+
+            <!-- LANGUAGE SETTINGS -->
             <div class="controls">
 
-                <label for="language">Choose Language</label>
+                <div class="control-group">
 
-                <select id="language">
-                    <option value="ha-NG">Hausa</option>
-                    <option value="en-NG">English</option>
-                </select>
+                    <label for="language">
+                        Choose Your Language
+                    </label>
 
-                <label for="voiceType">Voice Type</label>
+                    <select id="language">
 
-                <select id="voiceType">
-                    <option value="female">Female Voice</option>
-                    <option value="male">Male Voice</option>
-                </select>
+                        <option value="ha-NG" selected>
+                            Hausa
+                        </option>
 
-                <button id="speakBtn">
+                        <option value="en-NG">
+                            English
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="control-group">
+
+                    <label for="voiceType">
+                        Select Assistant Voice
+                    </label>
+
+                    <select id="voiceType">
+
+                        <option value="female" selected>
+                            Female Voice
+                        </option>
+
+                        <option value="male">
+                            Male Voice
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+                <button id="speakBtn" class="primary-button" type="button">
                     🔊 Test AI Voice
                 </button>
 
-                <button id="listenBtn">
+                <button id="listenBtn" class="secondary-button" type="button">
                     🎤 Test Microphone
                 </button>
 
             </div>
 
+
+            <!-- RESPONSE -->
             <div class="conversation">
-                <h3>Voice Test Result</h3>
-                <p id="response">
-                    Your AI assistant is ready.
+
+                <div class="conversation-heading">
+                    <span>💬</span>
+                    <h3>Assistant Response</h3>
+                </div>
+
+                <p id="response" aria-live="polite">
+                    Barka da zuwa! Zaɓi harshenka domin fara gwaji.
                 </p>
+
             </div>
 
         </section>
 
+
+        <!-- SERVICES -->
         <section class="features">
 
-            <h2>What I Can Help You Find</h2>
+            <div class="section-heading">
+
+                <span class="welcome-tag">
+                    EXPLORE HADEJIA
+                </span>
+
+                <h2>What Can I Help You Find?</h2>
+
+                <p>
+                    Discover useful places and services around your city.
+                </p>
+
+            </div>
+
 
             <div class="feature-grid">
 
-                <div class="feature">🏥 Hospitals</div>
-                <div class="feature">🏦 Banks</div>
-                <div class="feature">🏫 Schools</div>
-                <div class="feature">🏨 Hotels</div>
-                <div class="feature">🛍️ Markets</div>
-                <div class="feature">📍 Landmarks</div>
-                <div class="feature">🏢 Companies</div>
-                <div class="feature">🛣️ Directions</div>
+                <div class="feature">
+                    <span>🏥</span>
+                    <p>Hospitals</p>
+                </div>
+
+                <div class="feature">
+                    <span>🏦</span>
+                    <p>Banks & ATMs</p>
+                </div>
+
+                <div class="feature">
+                    <span>🏫</span>
+                    <p>Schools</p>
+                </div>
+
+                <div class="feature">
+                    <span>🏨</span>
+                    <p>Hotels</p>
+                </div>
+
+                <div class="feature">
+                    <span>🛍️</span>
+                    <p>Markets</p>
+                </div>
+
+                <div class="feature">
+                    <span>📍</span>
+                    <p>Landmarks</p>
+                </div>
+
+                <div class="feature">
+                    <span>🏢</span>
+                    <p>Businesses</p>
+                </div>
+
+                <div class="feature">
+                    <span>🛣️</span>
+                    <p>Directions</p>
+                </div>
 
             </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="about">
+
+            <h2>Discover Hadejia With Confidence</h2>
+
+            <p>
+                AI CALL AUTO HADEJIA is designed to make
+                finding local information easier through
+                intelligent voice assistance.
+            </p>
 
         </section>
 
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
+
+        <h3>AI CALL AUTO HADEJIA</h3>
+
+        <p>Your Smart Local Guide</p>
+
+        <p>Powered by Nagari Technologies</p>
+
         <p>Created by Aliyu</p>
-        <p>© 2026 Nagari Technologies</p>
+
+        <small>
+            © 2026 Nagari Technologies. All Rights Reserved.
+        </small>
+
     </footer>
 
+
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
-                                    </html>
-                  
+                        </html>
+    
