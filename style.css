@@ -1,4 +1,3 @@
-
 /* =========================================
    AI CALL CONNECT
    PREMIUM PROFESSIONAL UI / UX
@@ -1433,3 +1432,17 @@ img {
     }
 
        }
+
+/* FOOTER SOFT GREY TEXT */
+
+.footer-company span {
+    color: #C5D2CA;
+}
+
+.footer-company strong {
+    color: #D5DFD8;
+}
+
+.footer-copyright p {
+    color: #C5D2CA;
+}
