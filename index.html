@@ -1,173 +1,421 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#063b2b">
 
-    <title>AI CALL AUTO HADEJIA | Your Smart Local Guide</title>
+    <meta name="theme-color" content="#075B32">
 
-    <meta name="description" content="AI CALL AUTO HADEJIA - Your intelligent Hausa and English local guide, powered by Nagari Technologies.">
+    <meta name="description"
+        content="AI CALL CONNECT - Your Smart Voice Assistant. Discover local places, businesses and essential services in Hadejia, Jigawa State.">
 
+    <title>AI CALL CONNECT | Your Smart Voice Assistant</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
+    <!-- ================= HEADER ================= -->
 
-        <div class="logo">🎙️</div>
+    <header class="header" id="home">
 
-        <h1>AI CALL AUTO HADEJIA</h1>
+        <div class="header-container">
 
-        <p>Your Smart Local Guide</p>
+            <a href="#home" class="logo">
 
-        <span class="powered">
-            POWERED BY NAGARI TECHNOLOGIES
-        </span>
+                <div class="logo-icon">
+                    AC
+                </div>
+
+                <div class="logo-text">
+                    <h2>AI CALL</h2>
+                    <span>CONNECT</span>
+                </div>
+
+            </a>
+
+
+            <nav class="navigation">
+
+                <a href="#home" class="nav-link active">
+                    Home
+                </a>
+
+                <a href="#features" class="nav-link">
+                    Features
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About
+                </a>
+
+                <a href="#contact" class="nav-link">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <div class="powered">
+
+                <span class="powered-dot"></span>
+
+                <span>Powered by Nagari Technologies</span>
+
+            </div>
+
+        </div>
 
     </header>
 
 
-    <!-- MAIN CONTENT -->
-    <main class="container">
+    <!-- ================= MAIN ================= -->
 
-        <!-- WELCOME -->
-        <section class="welcome">
+    <main>
 
-            <span class="welcome-tag">
-                SMART LOCAL ASSISTANT
-            </span>
 
-            <h2>Barka da zuwa Hadejia!</h2>
+        <!-- ================= HERO SECTION ================= -->
 
-            <p>
-                Your intelligent local assistant for discovering
-                places, businesses and services around Hadejia.
-            </p>
+        <section class="hero">
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        YOUR SMART VOICE ASSISTANT
+                    </span>
+
+                    <h1>
+                        Welcome to
+
+                        <span>AI CALL CONNECT</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        A smarter way to discover places,
+                        businesses and essential services
+                        through intelligent voice assistance.
+                    </p>
+
+
+                    <div class="hero-location">
+
+                        <span class="location-icon">⌖</span>
+
+                        <span>
+                            Starting in Hadejia, Jigawa State
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="voice-wave">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="microphone-circle">
+
+                        <span class="microphone-icon">🎙</span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- AI ASSISTANT -->
-        <section class="assistant">
 
-            <div class="assistant-icon">
-                🤖
+        <!-- ================= ASSISTANT STATUS ================= -->
+
+        <section class="assistant-status">
+
+            <div class="assistant-brand">
+
+                <div class="ai-logo">
+                    AI
+                </div>
+
+                <div class="assistant-brand-info">
+
+                    <span class="assistant-label">
+                        AI VOICE ASSISTANT
+                    </span>
+
+                    <h2>AI Call Connect</h2>
+
+                    <p>
+                        Hausa and English Communication
+                    </p>
+
+                </div>
+
             </div>
 
-            <span class="welcome-tag">
-                AI VOICE TECHNOLOGY
-            </span>
 
-            <h2>Meet Your AI Assistant</h2>
-
-            <p class="assistant-description">
-                Speak naturally in Hausa or English.
-                I'm here to help you explore Hadejia.
-            </p>
-
-            <!-- STATUS -->
-            <div class="status-card">
+            <div class="system-status">
 
                 <span class="status-indicator"></span>
 
-                <p id="status">
-                    AI Voice System Ready
-                </p>
+                <div class="status-information">
+
+                    <h3>SYSTEM STATUS</h3>
+
+                    <p id="status">
+                        Ready to start testing
+                    </p>
+
+                </div>
 
             </div>
 
 
-            <!-- LANGUAGE SETTINGS -->
+            <div class="version">
+                V1.0
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= VOICE SETTINGS ================= -->
+
+        <section class="assistant" id="voice-assistant">
+
+
             <div class="controls">
 
-                <div class="control-group">
+                <div class="section-heading">
 
-                    <label for="language">
-                        Choose Your Language
-                    </label>
+                    <div class="heading-icon">
+                        ⚙
+                    </div>
 
-                    <select id="language">
+                    <div>
 
-                        <option value="ha-NG" selected>
-                            Hausa
-                        </option>
+                        <h2>Voice Settings</h2>
 
-                        <option value="en-NG">
-                            English
-                        </option>
+                        <p>
+                            Customize your assistant experience
+                        </p>
 
-                    </select>
+                    </div>
 
                 </div>
 
 
-                <div class="control-group">
+                <div class="control-grid">
 
-                    <label for="voiceType">
-                        Select Assistant Voice
-                    </label>
 
-                    <select id="voiceType">
+                    <!-- LANGUAGE -->
 
-                        <option value="female" selected>
-                            Female Voice
-                        </option>
+                    <div class="control-group">
 
-                        <option value="male">
-                            Male Voice
-                        </option>
+                        <label for="language">
+                            Select Language
+                        </label>
 
-                    </select>
+                        <div class="select-wrapper">
+
+                            <span class="select-icon">◎</span>
+
+                            <select id="language">
+
+                                <option value="ha-NG" selected>
+                                    Hausa
+                                </option>
+
+                                <option value="en-NG">
+                                    English
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- VOICE TYPE -->
+
+                    <div class="control-group">
+
+                        <label for="voiceType">
+                            Select Voice
+                        </label>
+
+                        <div class="select-wrapper">
+
+                            <span class="select-icon">🎙</span>
+
+                            <select id="voiceType">
+
+                                <option value="female" selected>
+                                    Female Voice
+                                </option>
+
+                                <option value="male">
+                                    Male Voice
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
 
-                <!-- ACTION BUTTONS -->
-                <button id="speakBtn" class="primary-button" type="button">
-                    🔊 Test AI Voice
-                </button>
+                <!-- VOICE BUTTONS -->
 
-                <button id="listenBtn" class="secondary-button" type="button">
-                    🎤 Test Microphone
-                </button>
+                <div class="voice-action-area">
 
-            </div>
+                    <div class="voice-actions">
+
+                        <button
+                            id="speakBtn"
+                            class="btn btn-primary"
+                            type="button">
+
+                            <span class="btn-icon">▶</span>
+
+                            <span>Test Voice</span>
+
+                        </button>
 
 
-            <!-- RESPONSE -->
-            <div class="conversation">
+                        <button
+                            id="listenBtn"
+                            class="btn btn-secondary"
+                            type="button">
 
-                <div class="conversation-heading">
-                    <span>💬</span>
-                    <h3>Assistant Response</h3>
+                            <span class="btn-icon">🎙</span>
+
+                            <span>Start Listening</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <p class="voice-note">
+
+                        <span>ⓘ</span>
+
+                        Select your preferred language and voice,
+                        then test your assistant.
+
+                    </p>
+
                 </div>
-
-                <p id="response" aria-live="polite">
-                    Barka da zuwa! Zaɓi harshenka domin fara gwaji.
-                </p>
 
             </div>
 
         </section>
 
 
-        <!-- SERVICES -->
-        <section class="features">
 
-            <div class="section-heading">
+        <!-- ================= RESPONSE SECTION ================= -->
 
-                <span class="welcome-tag">
-                    EXPLORE HADEJIA
+        <section class="conversation">
+
+            <div class="conversation-header">
+
+                <div class="conversation-title">
+
+                    <div class="response-icon">
+                        ▤
+                    </div>
+
+                    <div>
+
+                        <h2>Assistant Response</h2>
+
+                        <p>
+                            Your conversation will appear here
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <span class="live-badge">
+
+                    <span class="live-dot"></span>
+
+                    LIVE TEST
+
                 </span>
 
-                <h2>What Can I Help You Find?</h2>
+            </div>
+
+
+            <div class="response-content">
+
+                <div class="response-avatar">
+                    AI
+                </div>
+
+                <div class="response-message">
+
+                    <p id="response">
+                        Sannu! Barka da zuwa AI CALL CONNECT.
+                        Ina nan domin taimaka maka samun bayanai
+                        game da wurare, kasuwanci da ayyuka
+                        a Hadejia.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="features" id="features">
+
+            <div class="features-heading">
+
+                <span class="section-tag">
+                    OUR CAPABILITIES
+                </span>
+
+                <h2>Discover What We Offer</h2>
 
                 <p>
-                    Discover useful places and services around your city.
+                    Intelligent voice assistance designed
+                    to make finding local information easier.
                 </p>
 
             </div>
@@ -175,88 +423,167 @@
 
             <div class="feature-grid">
 
-                <div class="feature">
-                    <span>🏥</span>
-                    <p>Hospitals</p>
-                </div>
 
-                <div class="feature">
-                    <span>🏦</span>
-                    <p>Banks & ATMs</p>
-                </div>
+                <!-- FEATURE 1 -->
 
-                <div class="feature">
-                    <span>🏫</span>
-                    <p>Schools</p>
-                </div>
+                <article class="feature-card">
 
-                <div class="feature">
-                    <span>🏨</span>
-                    <p>Hotels</p>
-                </div>
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
 
-                <div class="feature">
-                    <span>🛍️</span>
-                    <p>Markets</p>
-                </div>
+                    <div class="feature-content">
 
-                <div class="feature">
-                    <span>📍</span>
-                    <p>Landmarks</p>
-                </div>
+                        <h3>Smart Assistance</h3>
 
-                <div class="feature">
-                    <span>🏢</span>
-                    <p>Businesses</p>
-                </div>
+                        <p>
+                            Get helpful information through
+                            natural voice interaction.
+                        </p>
 
-                <div class="feature">
-                    <span>🛣️</span>
-                    <p>Directions</p>
-                </div>
+                    </div>
+
+                </article>
+
+
+                <!-- FEATURE 2 -->
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        ⌖
+                    </div>
+
+                    <div class="feature-content">
+
+                        <h3>Local Discovery</h3>
+
+                        <p>
+                            Find hospitals, pharmacies,
+                            schools, banks, hotels and more.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FEATURE 3 -->
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        ◎
+                    </div>
+
+                    <div class="feature-content">
+
+                        <h3>Multiple Languages</h3>
+
+                        <p>
+                            Communicate using Hausa
+                            or English.
+                        </p>
+
+                    </div>
+
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- ABOUT -->
-        <section class="about">
 
-            <h2>Discover Hadejia With Confidence</h2>
+        <!-- ================= ABOUT ================= -->
 
-            <p>
-                AI CALL AUTO HADEJIA is designed to make
-                finding local information easier through
-                intelligent voice assistance.
-            </p>
+        <section class="about" id="about">
+
+            <div class="about-icon">
+                i
+            </div>
+
+
+            <div class="about-content">
+
+                <h2>About AI CALL CONNECT</h2>
+
+                <p>
+                    AI CALL CONNECT is an intelligent
+                    voice assistance project designed
+                    to help people access local information
+                    more easily.
+                </p>
+
+            </div>
+
+
+            <a href="#contact" class="about-link">
+                Learn More →
+            </a>
 
         </section>
+
 
     </main>
 
 
-    <!-- FOOTER -->
-    <footer>
 
-        <h3>AI CALL AUTO HADEJIA</h3>
+    <!-- ================= FOOTER ================= -->
 
-        <p>Your Smart Local Guide</p>
+    <footer class="footer" id="contact">
 
-        <p>Powered by Nagari Technologies</p>
+        <div class="footer-container">
 
-        <p>Created by Aliyu</p>
 
-        <small>
-            © 2026 Nagari Technologies. All Rights Reserved.
-        </small>
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+                    AC
+                </div>
+
+                <div>
+
+                    <h2>AI CALL</h2>
+
+                    <span>CONNECT</span>
+
+                    <p>Your Smart Voice Assistant</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-company">
+
+                <span>Powered by</span>
+
+                <strong>Nagari Technologies</strong>
+
+            </div>
+
+
+            <div class="footer-copyright">
+
+                <p>
+                    © 2026 AI CALL CONNECT.
+                    All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
 
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script src="script.js"></script>
 
-</body>
-                        </html>
-    
+</body>      
+</html>
+                            
