@@ -559,3 +559,34 @@ footer small {
         transition: none !important;
     }
            }
+/* PREMIUM COMPACT FOOTER */
+footer {
+    background: linear-gradient(
+        135deg,
+        #064E3B,
+        #023B2D
+    );
+    padding: 28px 15px 20px;
+    min-height: auto;
+    text-align: center;
+    border-radius: 35px 35px 0 0;
+}
+
+footer h2 {
+    color: #E6C98A;
+    font-size: 23px;
+    margin: 0 0 12px;
+}
+
+footer p {
+    color: #C7D9CF;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 7px 0;
+}
+
+footer .copyright {
+    color: #B5C9BE;
+    font-size: 12px;
+    margin-top: 22px;
+       }
