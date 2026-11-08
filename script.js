@@ -1,270 +1,420 @@
 
-/* =================================
-   AI CALL AUTO HADEJIA
-   Powered by Nagari Technologies
-================================= */
+/* ==========================================
+   AI CALL CONNECT
+   VOICE ASSISTANT SYSTEM
+   Hausa + English
+========================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/* 1. GET HTML ELEMENTS */
+
+const languageSelect = document.getElementById("language");
+const voiceSelect = document.getElementById("voiceType");
+
+const speakBtn = document.getElementById("speakBtn");
+const listenBtn = document.getElementById("listenBtn");
+
+const statusText = document.getElementById("status");
+const responseText = document.getElementById("response");
+
+
+/* 2. CHECK BROWSER SUPPORT */
+
+const speechSupported =
+    "speechSynthesis" in window;
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+const listeningSupported = Boolean(SpeechRecognition);
+
+
+/* 3. VOICE SETTINGS */
+
+let availableVoices = [];
+let recognition = null;
+let isListening = false;
+
+
+/* 4. TEXT MESSAGES */
+
+const messages = {
+
+    "ha-NG": {
+        greeting:
+            "Sannu! Barka da zuwa AI CALL CONNECT. Ina nan domin taimaka maka.",
+
+        listening:
+            "Ina sauraronka. Yi magana yanzu.",
+
+        stopped:
+            "Na dakatar da sauraro.",
+
+        notSupported:
+            "Yi hakuri, wannan browser ba ya goyon bayan microphone.",
+
+        permission:
+            "Ba a samu damar amfani da microphone ba. Ka duba permission na browser.",
+
+        error:
+            "An samu matsala wajen sauraron muryarka."
+    },
+
+    "en-NG": {
+        greeting:
+            "Hello! Welcome to AI CALL CONNECT. I am here to assist you.",
+
+        listening:
+            "I am listening. Please speak now.",
+
+        stopped:
+            "Listening has stopped.",
+
+        notSupported:
+            "Sorry, this browser does not support microphone recognition.",
+
+        permission:
+            "Microphone access was denied. Please check your browser permissions.",
+
+        error:
+            "An error occurred while listening."
+    }
+
+};
+
+
+/* 5. UPDATE STATUS */
+
+function updateStatus(message) {
+
+    if (statusText) {
+        statusText.textContent = message;
+    }
+
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f1f7f4;
-    color: #18352b;
-    min-height: 100vh;
+
+/* 6. UPDATE RESPONSE */
+
+function updateResponse(message) {
+
+    if (responseText) {
+        responseText.textContent = message;
+    }
+
 }
 
-/* HEADER */
 
-.header {
-    background: linear-gradient(
-        135deg,
-        #063b2b,
-        #08734f,
-        #00a878
+/* 7. GET CURRENT LANGUAGE */
+
+function getLanguage() {
+
+    return languageSelect.value || "ha-NG";
+
+}
+
+
+/* 8. LOAD AVAILABLE VOICES */
+
+function loadVoices() {
+
+    if (!speechSupported) return;
+
+    availableVoices =
+        window.speechSynthesis.getVoices();
+
+}
+
+if (speechSupported) {
+
+    loadVoices();
+
+    window.speechSynthesis.onvoiceschanged =
+        loadVoices;
+
+}
+
+
+/* 9. SELECT VOICE */
+
+function selectVoice(language, gender) {
+
+    loadVoices();
+
+    const languageCode =
+        language.split("-")[0].toLowerCase();
+
+    const matchingVoices =
+        availableVoices.filter(voice =>
+            voice.lang.toLowerCase().startsWith(languageCode)
+        );
+
+    const genderPattern =
+        gender === "female"
+            ? /female|woman|zira|samantha|victoria|karen|susan|google uk english female/i
+            : /male|man|david|mark|daniel|james|george/i;
+
+    const preferredVoice =
+        matchingVoices.find(voice =>
+            genderPattern.test(voice.name)
+        );
+
+    return preferredVoice ||
+        matchingVoices[0] ||
+        availableVoices[0] ||
+        null;
+
+}
+
+
+/* 10. SPEAK FUNCTION */
+
+function speakMessage(message) {
+
+    if (!speechSupported) {
+
+        updateStatus(
+            "Your browser does not support voice playback."
+        );
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const language = getLanguage();
+    const gender = voiceSelect.value;
+
+    const utterance =
+        new SpeechSynthesisUtterance(message);
+
+    utterance.lang = language;
+    utterance.rate = 0.88;
+    utterance.pitch =
+        gender === "female" ? 1.08 : 0.88;
+
+    const selectedVoice =
+        selectVoice(language, gender);
+
+    if (selectedVoice) {
+        utterance.voice = selectedVoice;
+    }
+
+    utterance.onstart = function () {
+
+        updateStatus("AI Voice is speaking...");
+
+    };
+
+    utterance.onend = function () {
+
+        updateStatus("AI Voice System Ready");
+
+    };
+
+    utterance.onerror = function (event) {
+
+        updateStatus(
+            "Voice error: " + event.error
+        );
+
+    };
+
+    window.speechSynthesis.speak(utterance);
+
+}
+
+
+/* 11. TEST VOICE BUTTON */
+
+speakBtn.addEventListener("click", function () {
+
+    const language = getLanguage();
+
+    const message =
+        messages[language].greeting;
+
+    updateResponse(message);
+
+    speakMessage(message);
+
+});
+
+
+/* 12. CREATE MICROPHONE RECOGNITION */
+
+if (listeningSupported) {
+
+    recognition = new SpeechRecognition();
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    recognition.maxAlternatives = 1;
+
+    recognition.lang = getLanguage();
+
+
+    recognition.onstart = function () {
+
+        isListening = true;
+
+        listenBtn.innerHTML =
+            '<span class="btn-icon">■</span><span>Stop Listening</span>';
+
+        updateStatus("Listening to your voice...");
+
+        updateResponse(
+            messages[getLanguage()].listening
+        );
+
+    };
+
+
+    recognition.onresult = function (event) {
+
+        const spokenText =
+            event.results[0][0].transcript;
+
+        updateResponse(
+            "You said: " + spokenText
+        );
+
+        updateStatus("Voice received successfully");
+
+
+    };
+
+
+    recognition.onerror = function (event) {
+
+        isListening = false;
+
+        listenBtn.innerHTML =
+            '<span class="btn-icon">🎙</span><span>Start Listening</span>';
+
+        if (event.error === "not-allowed" ||
+            event.error === "service-not-allowed") {
+
+            updateStatus(
+                messages[getLanguage()].permission
+            );
+
+        } else {
+
+            updateStatus(
+                "Microphone error: " + event.error
+            );
+
+        }
+
+    };
+
+
+    recognition.onend = function () {
+
+        isListening = false;
+
+        listenBtn.innerHTML =
+            '<span class="btn-icon">🎙</span><span>Start Listening</span>';
+
+        if (statusText.textContent ===
+            "Listening to your voice...") {
+
+            updateStatus("AI Voice System Ready");
+
+        }
+
+    };
+
+}
+
+
+/* 13. START / STOP LISTENING BUTTON */
+
+listenBtn.addEventListener("click", function () {
+
+    if (!listeningSupported) {
+
+        updateStatus(
+            messages[getLanguage()].notSupported
+        );
+
+        updateResponse(
+            messages[getLanguage()].notSupported
+        );
+
+        return;
+
+    }
+
+    if (isListening) {
+
+        recognition.stop();
+
+        return;
+
+    }
+
+    recognition.lang = getLanguage();
+
+    try {
+
+        recognition.start();
+
+    } catch (error) {
+
+        updateStatus(
+            "Unable to start microphone. Please try again."
+        );
+
+    }
+
+});
+
+
+/* 14. LANGUAGE CHANGE */
+
+languageSelect.addEventListener("change", function () {
+
+    if (isListening) {
+        recognition.stop();
+    }
+
+    updateStatus(
+        "Language changed to " +
+        (getLanguage() === "ha-NG" ? "Hausa" : "English")
     );
 
-    color: white;
-    text-align: center;
-    padding: 35px 15px;
-    border-radius: 0 0 25px 25px;
-}
+});
 
-.logo {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
 
-.header h1 {
-    font-size: 25px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
+/* 15. VOICE CHANGE */
 
-.header p {
-    margin-top: 10px;
-    font-size: 15px;
-}
+voiceSelect.addEventListener("change", function () {
 
-.powered {
-    display: inline-block;
-    margin-top: 15px;
-    font-size: 12px;
-    color: #d5ffeb;
-}
-
-/* MAIN CONTAINER */
-
-.container {
-    width: 100%;
-    max-width: 650px;
-    margin: 25px auto;
-    padding: 0 15px;
-}
-
-/* WELCOME SECTION */
-
-.welcome {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.welcome h2 {
-    color: #08734f;
-    font-size: 23px;
-    margin-bottom: 10px;
-}
-
-.welcome p {
-    color: #60766c;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* ASSISTANT CARD */
-
-.assistant {
-    background: white;
-    padding: 25px 18px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0, 60, 40, 0.09);
-    border: 1px solid #e0eee6;
-}
-
-.assistant-icon {
-    width: 85px;
-    height: 85px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    background: #e1f6ec;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 43px;
-}
-
-.assistant h2 {
-    color: #075c40;
-    font-size: 21px;
-    margin-bottom: 12px;
-}
-
-#status {
-    background: #eaf8f0;
-    color: #08734f;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 13px;
-    margin-bottom: 22px;
-}
-
-/* CONTROLS */
-
-.controls {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.controls label {
-    font-size: 14px;
-    font-weight: bold;
-    margin: 12px 0 8px;
-    color: #254b3b;
-}
-
-.controls select {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #c9ded2;
-    border-radius: 10px;
-    background: #f9fffb;
-    color: #18352b;
-    font-size: 15px;
-    outline: none;
-}
-
-.controls select:focus {
-    border-color: #079b69;
-}
-
-/* BUTTONS */
-
-.controls button {
-    width: 100%;
-    padding: 15px;
-    margin-top: 16px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(
-        135deg,
-        #08734f,
-        #00a878
+    updateStatus(
+        voiceSelect.value === "female"
+            ? "Female voice selected"
+            : "Male voice selected"
     );
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
+
+});
+
+
+/* 16. INITIALIZE SYSTEM */
+
+if (!speechSupported) {
+
+    updateStatus(
+        "Voice playback is not supported by this browser."
+    );
+
+} else {
+
+    updateStatus("AI Voice System Ready");
+
 }
-
-.controls button:active {
-    transform: scale(0.98);
-}
-
-.controls button:hover {
-    opacity: 0.9;
-}
-
-/* CONVERSATION */
-
-.conversation {
-    background: #f3faf6;
-    border: 1px solid #dceee3;
-    border-radius: 12px;
-    padding: 17px;
-    margin-top: 23px;
-    text-align: left;
-}
-
-.conversation h3 {
-    color: #08734f;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-#response {
-    color: #52675d;
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-/* FEATURES */
-
-.features {
-    margin-top: 30px;
-    background: white;
-    padding: 22px 16px;
-    border-radius: 18px;
-    box-shadow: 0 4px 15px rgba(0, 60, 40, 0.06);
-}
-
-.features h2 {
-    text-align: center;
-    color: #075c40;
-    font-size: 19px;
-    margin-bottom: 20px;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.feature {
-    background: #edf8f1;
-    color: #176344;
-    padding: 15px 8px;
-    text-align: center;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* FOOTER */
-
-footer {
-    background: #063b2b;
-    color: white;
-    text-align: center;
-    padding: 22px 10px;
-    margin-top: 35px;
-}
-
-footer p {
-    font-size: 12px;
-    margin: 5px 0;
-    color: #d5ffeb;
-}
-
-/* SMALL SCREENS */
-
-@media (max-width: 380px) {
-    .header h1 {
-        font-size: 21px;
-    }
-
-    .welcome h2 {
-        font-size: 20px;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    }
-      
